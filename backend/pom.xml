@@ -11,7 +11,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>4.0.3</version>
+		<version>3.3.5</version>
 		<relativePath/>
 	</parent>
 
@@ -94,6 +94,21 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<!-- Flyway: controla e versiona o schema do banco
+			via migrations SQL. Garante evolução estruturada
+			e impede alterações automáticas do Hibernate.
+		-->
+
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-database-postgresql</artifactId>
+		</dependency>
+
 		<!--
             Lombok:
             - Redução de boilerplate
@@ -102,7 +117,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<optional>true</optional>
+			<version>1.18.34</version> <optional>true</optional>
 		</dependency>
 
 		<!--
@@ -121,8 +136,8 @@
             Suporte a testes de segurança
         -->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security-test</artifactId>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 

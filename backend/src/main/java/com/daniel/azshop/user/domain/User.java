@@ -2,6 +2,9 @@ package com.daniel.azshop.user.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -9,8 +12,9 @@ import java.util.Set;
 
 @Entity
 @Table(name = "tb_user")
-@Getter
-@Setter
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class User {
 
@@ -22,16 +26,8 @@ public class User {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "tb_user_role",
-            joinColumns = @JoinColumn(
-                    name = "user_id",
-                    nullable = false,
-                    foreignKey = @ForeignKey(name = "fk_user_role_user")
-            ),
-            inverseJoinColumns = @JoinColumn(
-                    name = "role_id",
-                    nullable = false,
-                    foreignKey = @ForeignKey(name = "fk_user_role_role")
-            )
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<Role> roles = new HashSet<>();
 
@@ -45,23 +41,14 @@ public class User {
     private String password;
 
     @Column(nullable = false)
-    private Boolean active = true;
+    private Boolean active = Boolean.TRUE;
 
+    @CreatedDate
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
+    @LastModifiedDate
     @Column(nullable = false)
     private LocalDateTime updatedAt;
-
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-        updatedAt = LocalDateTime.now();
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        updatedAt = LocalDateTime.now();
-    }
 
 }

@@ -3,9 +3,13 @@ package com.daniel.azshop.user.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "tb_role")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Role {
 
     @Id
@@ -13,7 +17,6 @@ public class Role {
     private Long id;
 
     @EqualsAndHashCode.Include
-    @Column(name = "name", nullable = false, unique = true, length = 50)
+    @Column(nullable = false, unique = true, length = 50)
     private String name;
-
 }

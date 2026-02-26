@@ -1,0 +1,37 @@
+# Comandos:
+
+# Subir o container: docker compose up -d
+# Derrubar o container: docker compose down -v
+#   - Caso dê conflito com porta 5432: sudo fuser -k 5432/tcp
+
+# Entrar no container: docker exec -it azshop-db psql -U azshop -d azshop
+# Listar bancos: \l
+# Listar tabelas: \dt
+
+# ------------ POSTGRES ------------
+
+# Este serviço define um container PostgreSQL baseado na imagem oficial postgres:16-alpine,
+# que utiliza uma base Alpine Linux leve contendo o binário do PostgreSQL e um script de
+# inicialização que lê as variáveis de ambiente para criar o banco e o usuário na primeira execução.
+# O container será nomeado azshop-db e reiniciado automaticamente, exceto se for parado manualmente.
+# A porta 5432 do host é mapeada para a porta 5432 do container, permitindo que aplicações
+# rodando fora do Docker (como o Spring Boot local) acessem o banco via localhost:5432.
+# O volume nomeado azshop_postgres_data garante persistência dos dados, mantendo o conteúdo
+# do banco mesmo que o container seja removido ou recriado.
+
+services:
+    postgres:
+        image: postgres:15-alpine
+        container_name: azshop-db
+        restart: unless-stopped
+        environment:
+            POSTGRES_DB: azshop
+            POSTGRES_USER: azshop
+            POSTGRES_PASSWORD: azshop
+        ports:
+        - "5433:5432"
+        volumes:
+        - azshop_postgres_data:/var/lib/postgresql/data
+        
+volumes:
+  azshop_postgres_data:

@@ -1,0 +1,53 @@
+### --- JAVA & SPRING --- ###
+target/
+build/
+.gradle/
+bin/
+out/
+*.class
+*.war
+*.ear
+*.jar
+*.bundle.js
+*.com
+*.exe
+
+### --- SPRING BOOT --- ###
+# Arquivo de logs
+*.log
+# Pasta de logs padrão
+logs/
+# Arquivos gerados por plugins de teste (ex: JaCoCo)
+.jacoco
+.exec
+
+### --- DATABASE & DOCKER --- ###
+# Se você usa volumes locais do Docker (como o azshop_postgres_data)
+docker/data/
+pgdata/
+
+### --- INTELIJ IDEA --- ###
+.idea/
+*.iws
+*.iml
+*.ipr
+# Às vezes queremos ignorar apenas o workspace, mas manter as configs de run
+# .idea/workspace.xml
+
+### --- ECLIPSE & VS CODE --- ###
+.settings/
+.classpath
+.project
+.factorypath
+.vscode/
+
+### --- CONFIGURAÇÕES SENSÍVEIS (IMPORTANTE) --- ###
+# Nunca suba senhas ou chaves de API
+application-local.properties
+application-dev.properties
+.env
+secret.properties
+
+### --- SISTEMA OPERACIONAL --- ###
+Thumbs.db
+.DS_Store
