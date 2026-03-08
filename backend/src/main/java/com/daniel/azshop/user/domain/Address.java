@@ -27,38 +27,38 @@ public class Address {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(nullable = false, length = 255)
-    private String logradouro;
+    @Column(name = "street", nullable = false, length = 255)
+    private String street;
 
-    @Column(nullable = false, length = 20)
-    private String numero;
+    @Column(name = "number", nullable = false, length = 20)
+    private String number;
 
-    @Column(length = 255)
-    private String complemento;
+    @Column(name = "complement", length = 255)
+    private String complement;
 
-    @Column(name = "ponto_referencia", length = 255)
-    private String pontoReferencia;
+    @Column(name = "reference_point", length = 255)
+    private String referencePoint;
 
-    @Column(nullable = false, length = 100)
-    private String bairro;
+    @Column(name = "district", nullable = false, length = 100)
+    private String district;
 
-    @Column(nullable = false, length = 100)
-    private String cidade;
+    @Column(name = "city", nullable = false, length = 100)
+    private String city;
 
-    @Column(nullable = false, length = 2)
-    private String estado;
+    @Column(name = "state", nullable = false, length = 2)
+    private String state;
 
-    @Column(nullable = false, length = 20)
-    private String cep;
+    @Column(name = "postal_code", nullable = false, length = 20)
+    private String postalCode;
 
-    @Column(nullable = false, length = 100)
-    private String pais;
+    @Column(name = "country", nullable = false, length = 100)
+    private String country;
 
     @CreatedDate
-    @Column(nullable = false, updatable = false)
+    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
     @LastModifiedDate
-    @Column(nullable = false)
+    @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 }
