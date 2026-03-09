@@ -14,7 +14,7 @@
 # que utiliza uma base Alpine Linux leve contendo o binário do PostgreSQL e um script de
 # inicialização que lê as variáveis de ambiente para criar o banco e o usuário na primeira execução.
 # O container será nomeado azshop-db e reiniciado automaticamente, exceto se for parado manualmente.
-# A porta 5432 do host é mapeada para a porta 5432 do container, permitindo que aplicações
+# A porta 5433 do host é mapeada para a porta 5432 do container, permitindo que aplicações
 # rodando fora do Docker (como o Spring Boot local) acessem o banco via localhost:5432.
 # O volume nomeado azshop_postgres_data garante persistência dos dados, mantendo o conteúdo
 # do banco mesmo que o container seja removido ou recriado.
